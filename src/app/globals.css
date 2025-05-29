@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and effects */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(45, 212, 191, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(45, 212, 191, 0.5);
+  }
+}
+
+.border-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.border-glow:hover {
+  animation: glow 1.5s infinite;
+}
+
+.border-glow-teal:hover {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+
+/* Footer fade effect */
+footer {
+  position: relative;
+  /* Transition from secondary (blue) to background (black) */
+  background: linear-gradient(to top, hsl(var(--background)) 0%, hsl(var(--secondary)) 20%);
+  background-color: hsl(var(--secondary)); /* Fallback */
+}
+
+
+@layer base {
+  :root {
+    /* Light Theme Variables */
+    --background: 0 0% 100%; /* white */
+    --foreground: 222.2 84% 4.9%; /* dark gray / almost black */
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 222.2 84% 4.9%; /* dark gray / almost black */
+    --popover: 0 0% 100%; /* white */
+    --popover-foreground: 222.2 84% 4.9%; /* dark gray / almost black */
+    
+    --primary: 187 83% 46%;  /* neonTeal-500 */
+    --primary-foreground: 0 0% 100%; /* white (text on primary buttons) */
+    
+    --secondary: 210 40% 96.1%; /* light gray */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* dark gray */
+    
+    --muted: 210 40% 96.1%; /* light gray */
+    --muted-foreground: 215.4 16.3% 46.9%; /* medium gray (for less important text) */
+    
+    --accent: 210 40% 96.1%; /* light gray */
+    --accent-foreground: 222.2 47.4% 11.2%; /* dark gray */
+    
+    --destructive: 0 84.2% 60.2%; /* standard red */
+    --destructive-foreground: 0 0% 98%; /* light text for destructive elements */
+    
+    --border: 214.3 31.8% 91.4%; /* light gray border */
+    --input: 214.3 31.8% 91.4%; /* light gray input background */
+    --ring: 187 83% 46%;  /* neonTeal for focus rings */
+    
+    --radius: 0.5rem;
+
+    /* Chart colors */
+    --chart-1: 187 83% 46%;
+    --chart-2: 199 100% 55%;
+    --chart-3: 300 100% 50%;
+
+    /* Gradient colors */
+    --gradient-blue: 199 100% 55%;
+    --gradient-violet: 300 100% 50%;
+    
+    /* Dark Blue Glow Color */
+    --dark-blue-glow: 210 90% 50%;
+  }
+
+  .dark {
+    /* Dark Theme Variables */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 210 40% 98%; 
+    --primary-foreground: 222 47% 11%; 
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 9% 46.1%; 
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 173 90% 45%; 
+    --accent-foreground: 224 71.4% 4.1%; 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    /* Gradient colors for logo/text in dark mode */
+    --gradient-blue: 199 100% 55%;
+    --gradient-violet: 300 100% 50%;
+
+    /* Dark Blue Glow Color */
+    --dark-blue-glow: 210 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Gradient text utility */
+.gradient-blue-violet {
+  background-image: linear-gradient(to right, hsl(var(--gradient-blue)), hsl(var(--gradient-violet)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
+}
+
+/* Transparent Violet Button Style */
+/* Updated to Dark Blue Glow */
+.btn-transparent-violet {
+  @apply bg-transparent border border-[hsl(var(--dark-blue-glow))] text-[hsl(var(--dark-blue-glow))] hover:bg-[hsl(var(--dark-blue-glow))/10] transition-colors duration-200;
+  box-shadow: 0 0 5px hsl(var(--dark-blue-glow) / 0.5);
+}
+
+.btn-transparent-violet:hover {
+  box-shadow: 0 0 15px hsl(var(--dark-blue-glow) / 0.7);
+}
+
+/* Dynamic gradient background effect for all pages */
+.gradient-background {
+  background: radial-gradient(circle at 0% 0%, hsl(var(--gradient-blue) / 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 100% 0%, hsl(var(--gradient-violet) / 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 50% 100%, hsl(199, 100%, 55%, 0.1) 0%, transparent 70%);
+  background-size: 200% 200%;
+  animation: gradientMove 20s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 0%; }
+  25% { background-position: 100% 0%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Effect to make the logo appear slightly thicker/more prominent */
+.thicker-logo-effect {
+  transform: scale(1.05); /* Slightly enlarge the logo */
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.3)) drop-shadow(0px 0px 0.5px rgba(0,0,0,0.2)); /* Add a subtle drop shadow for depth */
+  /* Adjust transform-origin if needed, default is center */
+}

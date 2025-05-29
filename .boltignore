@@ -1,0 +1,65 @@
+# Standard Node.js / JS
+node_modules/
+.pnp/
+.pnp.js
+node_modules_old/
+
+# Build / Output
+/build/
+/dist/
+.out/
+.next/
+.vite/
+.vercel/
+
+# Tests & Coverage
+coverage/
+*.test.ts
+*.spec.ts
+
+# Env-Dateien & Secrets
+.env*
+*.pem
+*.tsbuildinfo
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backup / Duplikate / temporäre Projekte
+backup/
+my-app/
+my-builder-app/
+create-react-app-project/
+
+# Package files
+*.tgz
+
+# Cleanup Scripts
+cleanup.ps1
+
+# Next.js default TS env
+next-env.d.ts
+
+# Dokumentation & Medien (optional)
+*.md
+*.pdf
+*.pnsss
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.zip
+*.ico
+public/
+README.md

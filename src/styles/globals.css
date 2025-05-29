@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 224 71.4% 4.1%; /* Darker Slate Blue - e.g., slate-900 */
+    --foreground: 210 20% 98%; /* Light Gray / Off-white */
+    --card: 224 71.4% 6.1%; /* Slightly Lighter Slate Blue - e.g., slate-800 */
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 6.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 267 50% 58% / 0.9;  /* Primary Violet: Less saturated, lighter, 90% alpha */
+    --primary-foreground: 224 71.4% 4.1%; /* Dark for contrast on primary */
+    --secondary: 220 13% 18%; /* Darker Gray for secondary elements */
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 9% 46.1%; /* Muted Gray */
+    --muted-foreground: 215 20.2% 65.1%; /* Lighter Muted Gray */
+    --accent: 267 50% 58% / 0.9; /* Accent Violet: Less saturated, lighter, 90% alpha */
+    --accent-foreground: 224 71.4% 4.1%;
+    --destructive: 0 72.2% 50.6%; /* Red */
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 22.8%; /* Slightly lighter border */
+    --input: 220 13% 22.8%;
+    --ring: 267 50% 58% / 0.9; /* Ring Violet: Less saturated, lighter, 90% alpha */
+    --radius: 0.5rem;
+
+    /* Chart colors - can be adjusted if needed */
+    --chart-1: 267 50% 58% / 0.9; /* Chart Violet: Less saturated, lighter, 90% alpha */
+    --chart-2: 203 100% 50%;  /* Neon Blue */
+    --chart-3: 300 100% 50%;  /* Neon Magenta */
+
+    /* Custom gradient colors */
+    --gradient-blue: 203 100% 50%;
+    --gradient-violet: 260 100% 60%; /* This is the violet used in blue-to-violet gradients */
+  }
+ 
+  .dark {
+    /* Dark theme can be identical or slightly adjusted if needed */
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 6.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 6.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 267 50% 58% / 0.9; /* Primary Violet: Less saturated, lighter, 90% alpha */
+    --primary-foreground: 224 71.4% 4.1%;
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 220 9% 46.1%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 267 50% 58% / 0.9; /* Accent Violet: Less saturated, lighter, 90% alpha */
+    --accent-foreground: 224 71.4% 4.1%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 22.8%;
+    --input: 220 13% 22.8%;
+    --ring: 267 50% 58% / 0.9; /* Ring Violet: Less saturated, lighter, 90% alpha */
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif; /* Ensure Inter is applied */
+  }
+}
+
+/* Custom animations and effects */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.5); /* Alpha will be 0.9 * 0.5 = 0.45 */
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.7); /* Alpha will be 0.9 * 0.7 = 0.63 */
+  }
+  100% {
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.5); /* Alpha will be 0.9 * 0.5 = 0.45 */
+  }
+}
+
+.border-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.border-glow:hover {
+  animation: glow 1.5s infinite;
+  border-color: hsl(var(--primary)); /* Will use the 0.9 alpha */
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+}
+.gradient-teal-blue { /* This class name is now a misnomer as 'neonTeal' (primary) is violet */
+  @apply bg-gradient-to-r from-neonTeal-500 to-neonBlue-500; /* neonTeal-500 will use the new primary violet with its new transparency and aggressiveness */
+}
+.gradient-blue-violet {
+  @apply bg-gradient-to-r from-[hsl(var(--gradient-blue))] to-[hsl(var(--gradient-violet))] bg-clip-text text-transparent;
+}

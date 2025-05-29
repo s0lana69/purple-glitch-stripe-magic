@@ -1,0 +1,1 @@
+console.log('Testing Firebase configuration...'); console.log('Firebase API Key:', process.env.NEXT_PUBLIC_FIREBASE_API_KEY ? 'Found' : 'Missing'); console.log('Firebase Project ID:', process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID);

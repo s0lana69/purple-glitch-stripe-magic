@@ -1,0 +1,19 @@
+/* src/components/PricingContent.css */
+
+.plan-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.plan-button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.plan-button:hover {
+  background-color: #fff;
+  color: #000;
+}
